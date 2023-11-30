@@ -6,7 +6,7 @@ import WeaponClasses.Weapon;
 public abstract class Character {
 
     //Declare properties of ANY shape
-    private String name;
+    protected String name;
     private Weapon weapon;
     private int baseAttack;
     private int defense;

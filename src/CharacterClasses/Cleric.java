@@ -1,19 +1,38 @@
 package CharacterClasses;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import GUI.ChoosePanel;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 public class Cleric extends Character {
 
 
     private ImageIcon clericPic;
-    private String name ;
+
     //Constructor
 
     public Cleric(String name, int baseAttack, int defense, int agility, int hitPoints) {
-        super(name, baseAttack, defense, agility,  hitPoints);
-
-        clericPic = new ImageIcon(this.getClass().getResource("/Images/dwarf.png"));
+        super(name, baseAttack, defense, agility, hitPoints);
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("Images/dwarf.png");
+        if (is != null) {
+            BufferedImage img = null;
+            try {
+                img = ImageIO.read(is);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            clericPic = new ImageIcon(img);
+            try {
+                is.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public String getName() {return name;}

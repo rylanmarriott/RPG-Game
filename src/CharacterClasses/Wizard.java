@@ -2,7 +2,12 @@ package CharacterClasses;
 
 import GUI.ChoosePanel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 public class Wizard extends Character {
 
@@ -12,10 +17,22 @@ public class Wizard extends Character {
 
 
     public Wizard(String name, int baseAttack, int defense, int agility, int hitPoints) {
-        super(name, baseAttack, defense, agility,  hitPoints);
-//
-        //Set image for this shape
-        wizardPic = new ImageIcon(this.getClass().getResource("/Images/wizard.png"));
+        super(name, baseAttack, defense, agility, hitPoints);
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("Images/wizard.png");
+        if (is != null) {
+            BufferedImage img = null;
+            try {
+                img = ImageIO.read(is);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            wizardPic = new ImageIcon(img);
+            try {
+                is.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     public String getName() { return name;
     }
