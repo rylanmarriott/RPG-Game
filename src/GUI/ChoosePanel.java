@@ -448,13 +448,18 @@ public class ChoosePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int[] stats = getTextFieldsData();
                 String name = nameText.getText();
+                Character character = null;
                 getSelectMonster();
                 if (rdoWarrior.isSelected()) {
-                    Warrior character = new Warrior(name, stats[0], stats[1], stats[2], stats[3]);
+                    character = new Warrior(name, stats[0], stats[1], stats[2], stats[3]);
                 } else if (rdoWizard.isSelected()) {
-                    Wizard character = new Wizard(name, stats[0], stats[1], stats[2], stats[3]);
+                    character = new Wizard(name, stats[0], stats[1], stats[2], stats[3]);
                 } else if (rdoCleric.isSelected()) {
-                    Cleric character = new Cleric(name, stats[0], stats[1], stats[2], stats[3]);
+                    character = new Cleric(name, stats[0], stats[1], stats[2], stats[3]);
+                }
+
+                if (character != null) {
+
                 }
 
 

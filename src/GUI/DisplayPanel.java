@@ -28,7 +28,7 @@ public class DisplayPanel extends JPanel {
         setLayout(null);
 
         // Create and set the title label
-        JLabel choiceLabel = new JLabel("Battle Go The Death!");
+        JLabel choiceLabel = new JLabel("Battle To The Death!");
         choiceLabel.setFont(new Font("Calibri", Font.BOLD, 50));
         choiceLabel.setBounds(150, 10, 480, 50);
 
